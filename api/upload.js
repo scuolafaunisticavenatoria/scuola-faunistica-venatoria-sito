@@ -6,6 +6,7 @@ function setCors(res) {
 }
 export const config = { api: { bodyParser: { sizeLimit: '12mb' } } };
 export default async function handler(req, res) {
+  console.log('UPLOAD START', req.method);
   setCors(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Metodo non consentito' });
