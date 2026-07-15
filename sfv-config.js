@@ -19,5 +19,5 @@
       Cambiala prima di andare online.
    ============================================================ */
 
-window.SFV_API_BASE   = '';           // <-- metti qui il tuo dominio quando il backend è online
-window.SFV_ADMIN_TOKEN = 'cambiami';  // <-- scegli una password e usala anche su Vercel
+window.SFV_API_BASE    = 'https://scuola-faunistica-venatoria-sito-6yod.vercel.app';
+window.SFV_ADMIN_TOKEN = 'la-stessa-password-che-hai-messo-in-ADMIN_TOKEN';
