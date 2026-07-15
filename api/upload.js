@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     const blob = await put(filename, buffer, {
       access: 'public',
       contentType,
-      token: process.env.BLOB_READ_WRITE_TOKEN
+      token: process.env.blobpub_READ_WRITE_TOKEN
     });
 
     console.log('UPLOAD OK', blob.url);
