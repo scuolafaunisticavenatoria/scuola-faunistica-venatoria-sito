@@ -1,0 +1,9 @@
+{
+  "name": "sfv-backend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "^0.23.0",
+    "@vercel/kv": "^2.0.0"
+  }
+}
