@@ -1,11 +1,693 @@
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=./Scuola%20Faunistica%20Venatoria.dc.html">
-<title>Scuola Faunistica Venatoria</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<p>Se non vieni reindirizzato automaticamente, <a href="./Scuola%20Faunistica%20Venatoria.dc.html">clicca qui</a>.</p>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  @keyframes sfvDrift{ 0%{transform:translateY(0)} 50%{transform:translateY(-10px)} 100%{transform:translateY(0)} }
+  @keyframes sfvShimmer{ 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  @keyframes sfvPulse{ 0%,100%{transform:scale(1);opacity:.9} 50%{transform:scale(1.35);opacity:.35} }
+  image-slot{ --br:2px }
+</style>
+<script src="sfv-config.js"></script>
+<script src="sfv-data.js"></script>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" data-screen-label="Sito SFV" style="font-family:'Work Sans',sans-serif;background:#F3EFE4;color:#241E14;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative">
+
+  <!-- NAV -->
+  <nav ref="{{ navRef }}" style="position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 5vw;background:rgba(22,41,13,.92);backdrop-filter:blur(8px);color:#F3EFE4;border-bottom:1px solid rgba(217,182,92,.18);transition:background .3s ease, box-shadow .3s ease">
+    <a href="#top" style="display:flex;align-items:center;gap:10px">
+      <span style="background:#F3EFE4;border-radius:6px;padding:5px 9px;display:flex;align-items:center">
+        <img src="logo.jpg" alt="Scuola Faunistica Venatoria" style="height:34px;width:auto;display:block">
+      </span>
+    </a>
+
+    <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:30px">
+        <div style="display:flex;gap:26px;font-size:13px;letter-spacing:.02em">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="opacity:.82;transition:opacity .2s, color .2s" style-hover="opacity:1;color:#D9B65C">{{ l.label }}</a>
+          </sc-for>
+        </div>
+        <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid #D9B65C;color:#D9B65C;padding:9px 17px;transition:.25s;white-space:nowrap;border-radius:2px" style-hover="background:#D9B65C;color:#16290D">Area Formativa</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="background:transparent;border:1px solid rgba(217,182,92,.4);border-radius:4px;color:#D9B65C;width:44px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0">
+        <span style="display:block;width:20px;height:1.6px;background:#D9B65C"></span>
+        <span style="display:block;width:20px;height:1.6px;background:#D9B65C"></span>
+        <span style="display:block;width:20px;height:1.6px;background:#D9B65C"></span>
+      </button>
+    </sc-if>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <sc-if value="{{ mobileMenuVisible }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;top:65px;z-index:55;background:rgba(22,41,13,.98);backdrop-filter:blur(8px);color:#F3EFE4;padding:12px 5vw 20px;border-bottom:1px solid rgba(217,182,92,.18);display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+        <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="padding:12px 4px;border-bottom:1px solid rgba(217,182,92,.12);font-size:15px;color:#EAE3D2">{{ l.label }}</a>
+      </sc-for>
+      <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="margin-top:12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid #D9B65C;color:#D9B65C;padding:12px;border-radius:2px">Area Formativa →</a>
+    </div>
+  </sc-if>
+
+  <!-- ENROLL BAR -->
+  <a id="top" href="https://iscrizione-corsi-sfv-2026-nuovo.netlify.app/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#B99646,#D9B65C,#B99646);background-size:200% 100%;animation:sfvShimmer 6s linear infinite alternate;color:#16290D;text-align:center;padding:13px 5vw;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(14px,2vw,18px);letter-spacing:.01em;transition:filter .2s" style-hover="filter:brightness(1.06)">
+    Iscriviti ai corsi 2026 · Scuola Faunistica Venatoria
+    <span style="text-decoration:underline;text-underline-offset:3px">scopri come →</span>
+  </a>
+
+  <!-- HERO -->
+  <header style="position:relative;background:#16290D;color:#F3EFE4;overflow:hidden;padding:clamp(64px,8vw,104px) 5vw clamp(72px,9vw,116px)">
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.4;pointer-events:none;animation:sfvDrift 14s ease-in-out infinite" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-50,420 C150,380 250,460 400,410 C550,360 650,440 800,400 C950,360 1050,420 1250,380" stroke="#D9B65C" stroke-width="1" fill="none" opacity=".5"/>
+      <path d="M-50,450 C160,410 260,480 420,440 C570,400 670,470 820,430 C970,390 1070,450 1250,410" stroke="#D9B65C" stroke-width="1" fill="none" opacity=".35"/>
+      <path d="M-50,380 C140,340 240,410 390,370 C540,330 640,400 790,360 C940,320 1040,380 1250,340" stroke="#D9B65C" stroke-width="1" fill="none" opacity=".3"/>
+      <path d="M-50,340 C130,300 230,370 380,330 C530,290 630,360 780,320 C930,280 1030,340 1250,300" stroke="#D9B65C" stroke-width="1" fill="none" opacity=".2"/>
+    </svg>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 700px 520px at 84% 20%, rgba(217,182,92,.12), transparent 62%);pointer-events:none"></div>
+
+    <div style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center;max-width:1240px;margin:0 auto">
+      <div data-reveal style="flex:1 1 420px;min-width:min(100%,420px)">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D9B65C;margin-bottom:22px;display:flex;align-items:center;gap:10px"><span style="width:28px;height:1px;background:#D9B65C;display:inline-block"></span>VAZZOLA · TREVISO · DAL 2020</p>
+        <h1 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.06;font-size:clamp(38px,6vw,66px);letter-spacing:-.01em;max-width:12ch;margin-bottom:24px">Formazione venatoria, <em style="font-style:italic;color:#D9B65C;font-weight:500">passo dopo passo.</em></h1>
+        <p style="font-size:17px;max-width:52ch;color:#EAE3D2;font-weight:400;margin-bottom:18px">Corsi di abilitazione alla caccia, selezione ungulati, zona Alpi e biometria della fauna selvatica — in aula e online, seguiti dal primo giorno fino all'esame.</p>
+        <p style="font-family:'Fraunces',serif;font-style:italic;color:#D9B65C;font-size:15px;margin-bottom:30px">"Il concetto di famiglia, insito nel mondo venatorio, è ciò che ci muove."</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="#servizi" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#D9B65C;color:#16290D;padding:13px 24px;border-radius:2px;transition:.25s;font-weight:500" style-hover="background:#EAD583">Scopri i corsi →</a>
+          <a href="#contatti" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(217,182,92,.5);color:#F3EFE4;padding:13px 24px;border-radius:2px;transition:.25s" style-hover="border-color:#D9B65C;color:#D9B65C">Contattaci</a>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="150" style="flex:1 1 340px;min-width:min(100%,320px);position:relative">
+        <image-slot id="sfv-hero" shape="rounded" radius="3" placeholder="Foto aula / collezione — trascina qui" style="display:block;width:100%;height:clamp(380px,46vw,520px);border:1px solid rgba(217,182,92,.3)"></image-slot>
+        <div style="position:absolute;left:-10px;bottom:22px;background:#2E2418;color:#F3EFE4;padding:14px 18px;border-left:3px solid #D9B65C;box-shadow:0 18px 40px -18px rgba(0,0,0,.6);max-width:220px">
+          <b style="font-family:'Fraunces',serif;font-size:28px;color:#D9B65C;display:block;line-height:1">500+</b>
+          <span style="font-size:12px;color:#9C917C;letter-spacing:.02em">esemplari per la pratica in sede</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PORTALS -->
+  <div data-reveal style="display:flex;flex-wrap:wrap;gap:1px;background:rgba(217,182,92,.2);margin:0 5vw;transform:translateY(-44px);border:1px solid rgba(217,182,92,.2);box-shadow:0 30px 60px -30px rgba(22,41,13,.4)">
+    <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" style="flex:1 1 340px;background:#2E2418;padding:36px 32px 32px;position:relative;transition:background .3s, transform .3s;color:inherit" style-hover="background:#3A2E1F">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B99646;letter-spacing:.1em">01 — STUDENTI</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:600;color:#F3EFE4;font-size:24px;margin:14px 0 10px">Area Formativa</h3>
+      <p style="color:#9C917C;font-size:14px;max-width:42ch;margin-bottom:22px">Videolezioni, materiale d'esame e webinar in diretta per chi è iscritto ai corsi.</p>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#D9B65C;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase">Accedi alla piattaforma
+        <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+      </span>
+    </a>
+    <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" style="flex:1 1 340px;background:#2E2418;padding:36px 32px 32px;position:relative;transition:background .3s;color:inherit" style-hover="background:#3A2E1F">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9C917C;border:1px solid rgba(156,145,124,.4);display:inline-block;padding:3px 8px;margin-bottom:14px">Solo staff</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B99646;letter-spacing:.1em">02 — GESTIONE</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:600;color:#F3EFE4;font-size:24px;margin:14px 0 10px">Area Riservata</h3>
+      <p style="color:#9C917C;font-size:14px;max-width:42ch;margin-bottom:22px">Gestionale iscritti, pratiche e comunicazioni — accesso protetto da password.</p>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#D9B65C;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase">Apri il gestionale
+        <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- VERIFY -->
+  <div data-reveal style="margin:0 5vw clamp(56px,8vw,88px);background:#EAE3D2;border:1px solid rgba(76,122,46,.28);border-radius:4px;padding:24px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="flex:1;min-width:240px">
+      <h4 style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;margin-bottom:5px;color:#241E14;display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px"><circle cx="10.5" cy="10.5" r="6.5" stroke="#4C7A2E" stroke-width="1.6"/><path d="M15.5 15.5L21 21" stroke="#4C7A2E" stroke-width="1.6" stroke-linecap="round"/></svg>Verifica un attestato</h4>
+      <p style="font-size:13px;color:#6b6353">Hai un attestato rilasciato dalla nostra scuola e vuoi controllarne l'autenticità? Inserisci il codice di verifica.</p>
+    </div>
+    <form onSubmit="{{ verifyAttestato }}" style="display:flex;gap:8px;flex-wrap:wrap">
+      <input ref="{{ codeRef }}" type="text" placeholder="Es. SFV-2026-00123" autocomplete="off" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;padding:11px 14px;border:1px solid #c9c0aa;border-radius:4px;min-width:200px;background:#fff;color:#241E14">
+      <button type="submit" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#4C7A2E;color:#fff;border:none;padding:0 20px;border-radius:4px;cursor:pointer;transition:background .2s;height:42px" style-hover="background:#3d6023">Verifica →</button>
+    </form>
+  </div>
+
+  <!-- CHI SIAMO -->
+  <section id="chi-siamo" style="background:#F3EFE4;padding:clamp(56px,8vw,96px) 5vw">
+    <div data-reveal style="max-width:640px;margin-bottom:44px">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Chi siamo</p>
+      <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.08;font-size:clamp(28px,3.6vw,40px);color:#241E14">Un percorso che nasce sul campo.</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,70px);align-items:flex-start">
+      <div data-reveal style="flex:1 1 380px;min-width:min(100%,380px)">
+        <p style="color:#4a4436;font-size:15.5px;margin-bottom:16px;max-width:60ch">Scuola Faunistica Venatoria nasce a dicembre 2020 con lo scopo di formare i nuovi aspiranti cacciatori e dare a chi ha già l'abilitazione la possibilità di prepararsi alla caccia in Zona Alpi, secondo l'esame integrativo previsto dalla normativa regionale.</p>
+        <p style="color:#4a4436;font-size:15.5px;margin-bottom:16px;max-width:60ch">Le lezioni si tengono senza limiti di tempo, in presenza — dove è possibile fare pratica con oltre 500 esemplari della collezione naturalistica della scuola — e online, con videolezioni e webinar in diretta.</p>
+        <div style="display:flex;gap:36px;margin-top:32px;flex-wrap:wrap">
+          <div><b style="font-family:'Fraunces',serif;font-size:30px;display:block;color:#4C7A2E;line-height:1">500+</b><span style="font-size:12px;color:#7a7261;letter-spacing:.02em">esemplari in collezione</span></div>
+          <div><b style="font-family:'Fraunces',serif;font-size:30px;display:block;color:#4C7A2E;line-height:1">2020</b><span style="font-size:12px;color:#7a7261;letter-spacing:.02em">anno di fondazione</span></div>
+          <div><b style="font-family:'Fraunces',serif;font-size:30px;display:block;color:#4C7A2E;line-height:1">100%</b><span style="font-size:12px;color:#7a7261;letter-spacing:.02em">idonei all'ultima sessione</span></div>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="120" style="flex:1 1 300px;min-width:min(100%,280px)">
+        <div style="display:flex;gap:18px;align-items:flex-start;margin-bottom:20px">
+          <image-slot id="sfv-founder" shape="rounded" radius="3" placeholder="Foto docente" style="width:104px;height:130px;flex-shrink:0;border:1px solid rgba(36,30,20,.18)"></image-slot>
+          <div style="border-left:2px solid #D9B65C;padding-left:18px">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:8px">Il docente</p>
+            <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;margin-bottom:4px">Rudy Collodet</h3>
+            <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;letter-spacing:.02em">Istruttore ISPRA · Selecontrollore</p>
+          </div>
+        </div>
+        <p style="font-size:14px;color:#5a5142;max-width:52ch">Guardiacaccia professionista per 15 anni come agente di Polizia Provinciale a Treviso. Istruttore per rilevatori biometrici di fauna selvatica nominato dall'ISPRA, esperto selecontrollore di ungulati e conduttore cinofilo. Ha fatto parte del progetto LIFE WOLF ALPS come conduttore dell'unità cinofila antiveleno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION BAND -->
+  <section data-reveal style="position:relative;background:#16290D;padding:0;overflow:hidden">
+    <image-slot id="sfv-collezione" shape="rect" placeholder="Foto della collezione naturalistica — trascina qui" style="width:100%;height:clamp(280px,42vw,440px);display:block"></image-slot>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,41,13,.86) 0%,rgba(22,41,13,.5) 45%,rgba(22,41,13,.15) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 5vw;pointer-events:none">
+      <div style="max-width:460px;color:#F3EFE4">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D9B65C;margin-bottom:14px">La collezione</p>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.1;font-size:clamp(26px,3.4vw,38px);margin-bottom:14px">Oltre 500 esemplari<br>per imparare davvero.</h2>
+        <p style="font-size:15px;color:#EAE3D2;max-width:44ch">La pratica in sede consente di riconoscere specie, età e caratteristiche biometriche su animali reali — un vantaggio concreto in vista dell'esame.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORSI -->
+  <section id="servizi" style="background:#16290D;color:#F3EFE4;padding:clamp(56px,8vw,96px) 5vw">
+    <div data-reveal style="max-width:640px;margin-bottom:48px">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">I corsi</p>
+      <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.08;font-size:clamp(28px,3.6vw,40px);color:#F3EFE4">Un percorso per ogni tipo di cacciatore.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(240px,30%,320px),1fr));gap:1px;background:rgba(217,182,92,.16);border:1px solid rgba(217,182,92,.16)">
+      <sc-for list="{{ corsi }}" as="c" hint-placeholder-count="6">
+        <div data-reveal data-reveal-delay="{{ c.delay }}" style="background:#1F3814;padding:28px 26px;transition:background .3s;position:relative" style-hover="background:#254019">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B99646">{{ c.tag }}</p>
+            <span style="font-family:'Fraunces',serif;font-size:14px;color:rgba(217,182,92,.4)">{{ c.n }}</span>
+          </div>
+          <h4 style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:10px;color:#F3EFE4">{{ c.title }}</h4>
+          <p style="font-size:13.5px;color:#B9C4AE">{{ c.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- NEWS / LOCANDINE -->
+  <section id="news" style="background:#F3EFE4;padding:clamp(56px,8vw,96px) 5vw">
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end;max-width:1240px;margin:0 auto 24px">
+      <div style="max-width:640px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">News · Locandine</p>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.08;font-size:clamp(28px,3.6vw,40px);color:#241E14">Corsi in partenza.</h2>
+      </div>
+      <p style="font-size:13.5px;color:#7a7261;max-width:36ch;font-family:'JetBrains Mono',monospace;letter-spacing:.02em">Iscrizioni aperte per le prossime sessioni.</p>
+    </div>
+
+    <sc-if value="{{ hasLocandine }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:24px;max-width:1240px;margin:0 auto">
+        <sc-for list="{{ locandine }}" as="l" hint-placeholder-count="3">
+          <article style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(36,30,20,.12);border-radius:4px;overflow:hidden;transition:transform .3s, box-shadow .3s" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(22,41,13,.4)">
+            <sc-if value="{{ l.hasImage }}" hint-placeholder-val="{{ false }}">
+              {{ l.imgEl }}
+            </sc-if>
+            <sc-if value="{{ l.noImage }}" hint-placeholder-val="{{ true }}">
+              <div style="width:100%;height:clamp(340px,42vw,440px);background:repeating-linear-gradient(45deg,#EAE3D2,#EAE3D2 12px,#E2DAC8 12px,#E2DAC8 24px);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9C917C">locandina</div>
+            </sc-if>
+            <div style="padding:18px 18px 22px;border-top:3px solid #D9B65C;flex:1;display:flex;flex-direction:column">
+              <sc-if value="{{ l.hasStato }}" hint-placeholder-val="{{ true }}">
+                <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;margin-bottom:8px">{{ l.stato }}</p>
+              </sc-if>
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#241E14;margin-bottom:6px">{{ l.titolo }}</h3>
+              <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;letter-spacing:.02em;margin-bottom:12px">{{ l.metaLine }}</p>
+              <sc-if value="{{ l.hasDesc }}" hint-placeholder-val="{{ true }}">
+                <p style="font-size:13.5px;color:#4a4436;line-height:1.55;margin-bottom:16px">{{ l.descrizione }}</p>
+              </sc-if>
+              <sc-if value="{{ l.hasLink }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ l.link }}" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:#16290D;color:#D9B65C;padding:10px 16px;border-radius:3px;transition:.2s" style-hover="background:#1F3814">Iscriviti →</a>
+              </sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noLocandine }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:1240px;margin:0 auto;border:1px dashed rgba(36,30,20,.25);border-radius:6px;padding:52px 30px;text-align:center;background:#fff">
+        <p style="font-family:'Fraunces',serif;font-size:21px;color:#241E14;margin-bottom:8px">Nessun corso in programma al momento.</p>
+        <p style="font-size:14px;color:#7a7261;max-width:46ch;margin:0 auto">Le prossime sessioni verranno pubblicate qui. Contattaci per informazioni sui corsi in preparazione.</p>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- TESTIMONIANZE -->
+  <section id="testimonianze" style="background:#EAE3D2;padding:clamp(56px,8vw,96px) 5vw">
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:16px 24px;justify-content:space-between;align-items:flex-end;margin-bottom:36px">
+      <div style="max-width:640px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Gli allievi</p>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.08;font-size:clamp(28px,3.6vw,40px);color:#241E14">Chi ha superato l'esame con noi.</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;color:#7a7261;white-space:nowrap"><span style="color:#D9B65C">★★★★★</span> Recensioni verificate</span>
+        <div style="display:flex;gap:10px">
+          <button onClick="{{ scrollPrev }}" aria-label="Recensione precedente" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(36,30,20,.28);background:transparent;color:#16290D;font-family:'Fraunces',serif;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s" style-hover="background:#16290D;color:#D9B65C;border-color:#16290D">‹</button>
+          <button onClick="{{ scrollNext }}" aria-label="Recensione successiva" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(36,30,20,.28);background:transparent;color:#16290D;font-family:'Fraunces',serif;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s" style-hover="background:#16290D;color:#D9B65C;border-color:#16290D">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal style="overflow:hidden;margin:0 -5vw">
+      <div ref="{{ trackRef }}" style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:6px 5vw 10px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="6">
+        <figure style="flex:0 0 clamp(280px,30%,360px);scroll-snap-align:start;background:#F3EFE4;border:1px solid rgba(36,30,20,.1);border-top:3px solid #D9B65C;border-radius:3px;padding:26px 26px 24px;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s" style-hover="transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(22,41,13,.35)">
+          <div style="display:flex;gap:3px;color:#D9B65C;font-size:15px;letter-spacing:2px;margin-bottom:14px" aria-label="5 su 5 stelle">★★★★★</div>
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#241E14;line-height:1.2;margin-bottom:12px">{{ t.title }}</h3>
+          <blockquote style="font-size:14.5px;color:#4a4436;line-height:1.62;margin-bottom:20px;flex:1">{{ t.quote }}</blockquote>
+          <figcaption style="display:flex;align-items:center;gap:12px;border-top:1px solid rgba(36,30,20,.1);padding-top:16px">
+            <span style="width:38px;height:38px;border-radius:50%;background:#16290D;color:#D9B65C;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:15px;flex-shrink:0">{{ t.initial }}</span>
+            <span>
+              <b style="display:block;font-size:14px;color:#241E14;font-weight:600">{{ t.name }}</b>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.03em;color:#7a7261">{{ t.meta }}</span>
+            </span>
+          </figcaption>
+        </figure>
+      </sc-for>
+      </div>
+    </div>
+
+    <!-- LASCIA UNA RECENSIONE -->
+    <div data-reveal style="max-width:1240px;margin:40px auto 0;background:#F3EFE4;border:1px solid rgba(36,30,20,.12);border-radius:6px;padding:clamp(24px,4vw,36px)">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+        <div style="max-width:52ch">
+          <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(20px,2.4vw,26px);color:#241E14;margin-bottom:6px">Hai frequentato un nostro corso?</h3>
+          <p style="font-size:14.5px;color:#5a5142">Lascia la tua recensione. Verrà pubblicata dopo una breve verifica da parte della scuola — così restano autentiche.</p>
+        </div>
+        <sc-if value="{{ reviewClosed }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ openReview }}" style="flex-shrink:0;display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#16290D;color:#D9B65C;border:none;padding:14px 22px;border-radius:4px;cursor:pointer;transition:.2s" style-hover="background:#1F3814">
+            <span style="color:#D9B65C;letter-spacing:1px">★</span> Scrivi una recensione
+          </button>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ reviewDone }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:22px;display:flex;align-items:flex-start;gap:14px;background:#EAE3D2;border:1px solid rgba(76,122,46,.3);border-left:3px solid #4C7A2E;border-radius:4px;padding:18px 20px">
+          <svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;flex-shrink:0"><circle cx="12" cy="12" r="9" stroke="#4C7A2E" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#4C7A2E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <b style="font-family:'Fraunces',serif;font-size:17px;color:#241E14;display:block;margin-bottom:3px">Grazie! Recensione ricevuta.</b>
+            <span style="font-size:14px;color:#5a5142">La pubblicheremo sul sito dopo averla verificata. A presto!</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ reviewOpen }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ submitReview }}" style="margin-top:24px;border-top:1px solid rgba(36,30,20,.12);padding-top:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <label style="flex:1 1 45%;min-width:200px;display:flex;flex-direction:column;gap:6px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7f4f">Nome <span style="color:#B24A3B">*</span></span>
+              <input type="text" value="{{ rfNome }}" onInput="{{ set_rf_nome }}" placeholder="Il tuo nome" required style="background:#fff;border:1px solid #cfc6b0;color:#241E14;font-size:15px;padding:12px 14px;border-radius:4px" style-focus="border-color:#4C7A2E;outline:none">
+            </label>
+            <label style="flex:1 1 45%;min-width:200px;display:flex;flex-direction:column;gap:6px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7f4f">Corso frequentato</span>
+              <input type="text" value="{{ rfCorso }}" onInput="{{ set_rf_corso }}" placeholder="Es. Corso base, Zona Alpi…" style="background:#fff;border:1px solid #cfc6b0;color:#241E14;font-size:15px;padding:12px 14px;border-radius:4px" style-focus="border-color:#4C7A2E;outline:none">
+            </label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7f4f">Titolo</span>
+            <input type="text" value="{{ rfTitolo }}" onInput="{{ set_rf_titolo }}" placeholder="Es. Preparazione eccellente" style="background:#fff;border:1px solid #cfc6b0;color:#241E14;font-size:15px;padding:12px 14px;border-radius:4px" style-focus="border-color:#4C7A2E;outline:none">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7f4f">La tua recensione <span style="color:#B24A3B">*</span></span>
+            <textarea value="{{ rfTesto }}" onInput="{{ set_rf_testo }}" placeholder="Racconta la tua esperienza col corso e con la scuola." rows="4" required style="background:#fff;border:1px solid #cfc6b0;color:#241E14;font-size:15px;padding:12px 14px;border-radius:4px;resize:vertical;line-height:1.6"></textarea>
+          </label>
+          <sc-if value="{{ reviewError }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:13.5px;color:#B24A3B">{{ reviewError }}</p>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button type="submit" disabled="{{ sendDisabled }}" style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:{{ sendBg }};color:#F3EFE4;border:none;padding:14px 24px;border-radius:4px;cursor:{{ sendCursor }}">{{ sendLabel }} →</button>
+            <button type="button" onClick="{{ closeReview }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:transparent;border:1px solid rgba(36,30,20,.25);color:#5a5142;padding:14px 20px;border-radius:4px;cursor:pointer">Annulla</button>
+            <span style="font-size:12px;color:#8a8069">Verificata prima della pubblicazione</span>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+  </section>
+  <section id="contatti" style="background:#F3EFE4;padding:clamp(56px,8vw,96px) 5vw">
+    <div data-reveal style="max-width:640px;margin-bottom:48px">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Contatti</p>
+      <h2 style="font-family:'Fraunces',serif;font-weight:600;line-height:1.08;font-size:clamp(28px,3.6vw,40px);color:#241E14">Scrivici, o passa in sede.</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,56px);align-items:stretch">
+      <div data-reveal style="flex:1 1 300px;min-width:min(100%,300px);display:flex;flex-direction:column;gap:24px">
+        <ul style="list-style:none">
+          <li style="display:grid;grid-template-columns:100px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(36,30,20,.12);font-size:14.5px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;padding-top:2px">Indirizzo</span><span>Via Cal Resana, 24<br>31028 Vazzola (TV)</span></li>
+          <li style="display:grid;grid-template-columns:100px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(36,30,20,.12);font-size:14.5px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;padding-top:2px">Telefono</span><span><a href="tel:+393331697875" style="border-bottom:1px solid transparent;transition:.2s" style-hover="border-color:#241E14">333 169 7875</a></span></li>
+          <li style="display:grid;grid-template-columns:100px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(36,30,20,.12);font-size:14.5px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;padding-top:2px">Email</span><span><a href="mailto:scuolafaunisticavenatoria@gmail.com" style="border-bottom:1px solid transparent;transition:.2s" style-hover="border-color:#241E14">scuolafaunisticavenatoria@gmail.com</a></span></li>
+        </ul>
+        <div style="background:#16290D;color:#F3EFE4;padding:26px 24px;border-radius:3px">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#D9B65C;margin-bottom:16px">Orari di risposta</p>
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:8px 0;border-bottom:1px solid rgba(217,182,92,.15)"><span>Lun · Mar · Gio · Ven · Sab</span><span>9:00 – 12:30</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:8px 0"><span>Lun · Mar · Mer · Gio · Ven</span><span>16:30 – 19:30</span></div>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="120" style="flex:1 1 340px;min-width:min(100%,300px);display:flex;flex-direction:column">
+        <div style="position:relative;flex:1;min-height:300px;border:1px solid rgba(36,30,20,.15);border-radius:3px;overflow:hidden;background:#DfDaCb">
+          <iframe title="Mappa sede SFV" src="https://www.openstreetmap.org/export/embed.html?bbox=12.3835%2C45.8385%2C12.4135%2C45.8505&amp;layer=mapnik&amp;marker=45.8445%2C12.3985" style="width:100%;height:100%;min-height:300px;border:0;filter:saturate(.72) contrast(1.02);display:block" loading="lazy"></iframe>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Via+Cal+Resana+24+Vazzola+TV" target="_blank" rel="noopener" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;border:1px solid rgba(76,122,46,.4);padding:10px 16px;border-radius:3px;transition:.2s" style-hover="background:#4C7A2E;color:#fff">Indicazioni stradali →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#2E2418;color:#9C917C;padding:clamp(44px,6vw,56px) 5vw 30px">
+    <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(217,182,92,.14)">
+      <div style="max-width:280px">
+        <img src="logo.jpg" alt="Scuola Faunistica Venatoria" style="height:52px;width:auto;background:#F3EFE4;border-radius:6px;padding:6px 9px;margin-bottom:14px">
+        <span style="display:block;color:#9C917C;font-size:13px">Via Cal Resana, 24 — Vazzola (TV)</span>
+      </div>
+      <div style="display:flex;gap:clamp(32px,6vw,64px);flex-wrap:wrap">
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Navigazione</p>
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">{{ l.label }}</a>
+          </sc-for>
+        </div>
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Aree</p>
+          <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Formativa</a>
+          <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Riservata</a>
+          <a href="Pannello Locandine.dc.html" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Gestione locandine</a>
+        </div>
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Seguici</p>
+          <a href="#" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Facebook</a>
+          <a href="#" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLABORAZIONE -->
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:30px 0;border-bottom:1px solid rgba(217,182,92,.14)">
+      <img src="cal-resana-logo.png" alt="Cal Resana Outdoor" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
+      <a href="https://www.jagdterrier.it/" target="_blank" rel="noopener" style="display:inline-flex">
+        <img src="cidjt-logo.png" alt="Club Italiano Deutscher Jagdterrier" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
+      </a>
+      <a href="https://upgradeyourrifle.com/it/" target="_blank" rel="noopener" style="display:inline-flex">
+        <img src="riva-brutti-logo.png" alt="Riva &amp; Brutti — upgradeyourrifle.com" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
+      </a>
+      <a href="https://montecoppolo.it/shop/it/" target="_blank" rel="noopener" style="display:inline-flex">
+        <img src="montecoppolo-logo.jpeg" alt="Montecoppolo" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
+      </a>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#D9B65C">Collabora con noi</span>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;flex-wrap:wrap;gap:10px">
+      <span>© 2020–2026 Scuola Faunistica Venatoria — P.IVA 05459010269</span>
+      <span style="font-size:12px;color:#7d7361">Tutti i diritti riservati</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = {
+    isMobile: (typeof window !== 'undefined' ? window.innerWidth < 860 : false),
+    menuOpen: false,
+    locandine: null,
+    reviews: [],
+    reviewOpen: false,
+    reviewSending: false,
+    reviewDone: false,
+    reviewError: '',
+    rf: { nome: '', titolo: '', testo: '', corso: '' }
+  };
+
+  async loadReviews(tries){
+    tries = tries || 0;
+    if (!window.SFVData){
+      if (tries < 20){ setTimeout(() => this.loadReviews(tries + 1), 150); return; }
+      return;
+    }
+    try {
+      const items = await window.SFVData.listReviews();
+      this.setState({ reviews: Array.isArray(items) ? items : [] });
+    } catch (e) { /* mantiene solo le curate */ }
+  }
+
+  async loadLocandine(tries){
+    tries = tries || 0;
+    if (!window.SFVData){
+      if (tries < 20){ setTimeout(() => this.loadLocandine(tries + 1), 150); return; }
+      this.setState({ locandine: [] }); return;
+    }
+    try {
+      const items = await window.SFVData.list();
+      this.setState({ locandine: Array.isArray(items) ? items : [] });
+    } catch (e) {
+      this.setState({ locandine: [] });
+    }
+  }
+
+  constructor(props){
+    super(props);
+    this.rootRef = React.createRef();
+    this.navRef = React.createRef();
+    this.codeRef = React.createRef();
+    this.trackRef = React.createRef();
+  }
+
+  getStep(){
+    const t = this.trackRef.current;
+    if (!t || !t.firstElementChild) return 300;
+    const gs = getComputedStyle(t);
+    const gap = parseFloat(gs.columnGap || gs.gap || '20') || 20;
+    return t.firstElementChild.getBoundingClientRect().width + gap;
+  }
+
+  advance(dir){
+    const t = this.trackRef.current;
+    if (!t) return;
+    const step = this.getStep();
+    const max = t.scrollWidth - t.clientWidth;
+    if (dir > 0 && t.scrollLeft >= max - 4) t.scrollTo({ left: 0, behavior: 'smooth' });
+    else if (dir < 0 && t.scrollLeft <= 4) t.scrollTo({ left: max, behavior: 'smooth' });
+    else t.scrollBy({ left: step * dir, behavior: 'smooth' });
+  }
+
+  componentDidMount(){
+    const root = this.rootRef.current;
+
+    this._onResize = () => {
+      const m = window.innerWidth < 860;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: m ? this.state.menuOpen : false });
+    };
+    window.addEventListener('resize', this._onResize);
+
+    const nav = this.navRef.current;
+    this._onScroll = () => {
+      if (!nav) return;
+      const s = window.scrollY > 24;
+      nav.style.background = s ? 'rgba(16,30,9,.97)' : 'rgba(22,41,13,.92)';
+      nav.style.boxShadow = s ? '0 12px 32px -16px rgba(0,0,0,.55)' : 'none';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    this.loadLocandine();
+    this.loadReviews();
+
+    // Editable + persistent text fields (locandine)
+    if (root){
+      root.querySelectorAll('[data-persist]').forEach(el => {
+        const key = 'sfv:' + el.getAttribute('data-persist');
+        try { const saved = localStorage.getItem(key); if (saved !== null && saved !== '') el.innerText = saved; } catch(e){}
+        el.addEventListener('input', () => { try { localStorage.setItem(key, el.innerText); } catch(e){} });
+        el.addEventListener('keydown', (e) => {
+          const multiline = /-desc$/.test(el.getAttribute('data-persist') || '');
+          if (e.key === 'Enter' && !multiline){ e.preventDefault(); el.blur(); }
+        });
+      });
+    }
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !root) return;
+    const nodes = root.querySelectorAll('[data-reveal]');
+    nodes.forEach(n => {
+      n.style.opacity = '0';
+      n.style.transform = 'translateY(28px)';
+      n.style.transition = 'opacity .8s cubic-bezier(.16,.7,.3,1), transform .8s cubic-bezier(.16,.7,.3,1)';
+      n.style.willChange = 'opacity, transform';
+    });
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          const el = e.target;
+          const d = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
+          el.style.transitionDelay = (d / 1000) + 's';
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          this._io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(n => this._io.observe(n));
+
+    const track = this.trackRef.current;
+    if (track){
+      const start = () => { if (!this._auto) this._auto = setInterval(() => this.advance(1), 4800); };
+      this._carouselPause = () => { if (this._auto){ clearInterval(this._auto); this._auto = null; } };
+      this._carouselResume = start;
+      track.addEventListener('pointerenter', this._carouselPause);
+      track.addEventListener('pointerleave', this._carouselResume);
+      track.addEventListener('pointerdown', this._carouselPause);
+      track.addEventListener('focusin', this._carouselPause);
+      start();
+    }
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+    if (this._auto) clearInterval(this._auto);
+  }
+
+  renderVals(){
+    const corsi = [
+      { n:'01', tag:'Base',          title:'Licenza di caccia',            desc:'Il percorso completo per diventare cacciatore, con lo studio delle cinque materie previste dalla legge 157/92.' },
+      { n:'02', tag:'Integrativo',   title:'Zona Alpi',                    desc:"Per chi ha già l'abilitazione venatoria e vuole ottenere l'integrazione per la caccia in Zona Alpi, in tutte le province del Veneto." },
+      { n:'03', tag:'Specialistico', title:'Caccia collettiva',            desc:'Preparazione alla caccia collettiva al cinghiale, con particolare attenzione alla tecnica della girata e della braccata.' },
+      { n:'04', tag:'Specialistico', title:'Selezione ungulati',           desc:"Corso teorico e pratico per l'abilitazione alla selezione degli ungulati, secondo i parametri dettati dall'ISPRA." },
+      { n:'05', tag:'Cinofilia',     title:'Conduttori cani da recupero',  desc:'Formazione dei conduttori di cani da recupero per ungulati feriti, con attenzione alla scelta e all\u2019addestramento del cane.' },
+      { n:'06', tag:'Tecnico',       title:'Biometria della fauna',        desc:'Abilitazione alla misurazione e alla catalogazione degli ungulati, in modo corretto e standardizzato.' },
+      { n:'07', tag:'Sanitario',     title:'Trattamento delle carni',      desc:'Corso per diventare \u201cpersona formata\u201d al trattamento delle carni di selvaggina, come richiesto dalla normativa igienico-sanitaria.' },
+      { n:'08', tag:'Controllo',     title:'Controllo al cinghiale',       desc:'Formazione per gli interventi di controllo della popolazione di cinghiale, secondo i piani autorizzati dagli enti competenti.' },
+      { n:'09', tag:'Vigilanza',     title:'Guardie venatorie volontarie', desc:'Percorso per le nuove guardie venatorie volontarie, con nozioni di normativa, vigilanza e tutela della fauna sul territorio.' }
+    ].map((c, i) => ({ ...c, delay: (i % 3) * 90 }));
+
+    const testimonials = [
+      { initial:'E', name:'Elisabetta', title:'Corso GGVV', quote:'Rudy \u00e8 molto edotto in materia e riesce a trasmettere il suo sapere, arricchito dalle sue esperienze e coinvolgente. Complimenti!' },
+      { initial:'C', name:'Claudia', title:'Corso base \u2014 Licenza di caccia', quote:'Bellissimo corso, adatto anche a chi come me \u00e8 donna. Ti prepara non solo all\u2019esame di esercizio venatorio, ma anche a conoscere la natura, l\u2019ambiente e gli animali. Un corso che appassiona le persone, merito del preparatissimo Rudy!' },
+      { initial:'T', name:'Telemaco', title:'Esperienza ottima!', quote:'Esperienza pi\u00f9 che positiva, Rudy \u00e8 molto preparato sugli argomenti e questo ti permette di arrivare al meglio all\u2019esame. Inoltre la scuola vanta una vasta collezione di volatili impagliati, molto utile per lo studio delle varie specie.' },
+      { initial:'I', name:'Igor Bianchin', title:'Corso base & Zona Alpi Belluno', quote:'Voglio ringraziare di cuore il mio maestro Rudy, che ha avuto il coraggio di preparare un figlio di veneti cresciuto e nato in Svizzera tedesca. Grazie a questo corso ho potuto realizzare un sogno: cacciare dove sono le mie radici. Grazie!!' },
+      { initial:'M', name:'Michele', title:'Corso caccia di selezione', quote:'Ottimo corso, svolto per la maggior parte online. Anche se ero completamente neofita, con un po\u2019 di studio sono riuscito a completare tutte le specie, compreso il controllo al cinghiale, in poco pi\u00f9 di un anno. Davvero OTTIMO!' },
+      { initial:'R', name:'Rocco', title:'Grande scuola e ottimi corsi', quote:'Una scuola perfetta. Rudy grande professionista e soprattutto grande persona, conoscitore dell\u2019ambiente e della caccia! Super consigliato per chi vuole iniziare con l\u2019attivit\u00e0 venatoria!' },
+      { initial:'M', name:'Michele Castelli', title:'Esperto selezionatore', quote:'Soddisfatto del corso e del docente: semplice, preparato e chiaro.' },
+      { initial:'R', name:'Riccardo', title:'Entusiasta', quote:'Corso completo, con attivit\u00e0 ben strutturate ed efficaci. Materiali ricchi e comunicazione chiara, in linea col gruppo eterogeneo a cui la formazione era rivolta. Esperienza didattica utile e certamente consigliabile.' },
+      { initial:'S', name:'Sandro', title:'Voto: 10', quote:'Corso molto interessante, con docenti competenti e molto preparati: non ti annoi alle lezioni. Complimenti e grazie Rudy!' },
+      { initial:'M', name:'Mario', title:'Corso Rilevatore Biometrico', quote:'Ottimo corso, istruttore con grandissima conoscenza della materia e con ottimo metodo di spiegazione.' },
+      { initial:'D', name:'Dassie\u2019 Fabio', title:'Soddisfatto', quote:'Rudy sempre competente e presente, molto preparato e spiega molto bene. Consiglio vivamente.' },
+      { initial:'G', name:'Gloria', title:'Corso Rilevatore Biometrico', quote:'Corso davvero ben strutturato. Grande professionalit\u00e0 del docente.' },
+      { initial:'D', name:'Denis', title:'Biometria', quote:'Corso di biometria ben impostato e facile da capire. Grazie!' }
+    ].map((t, i) => ({ ...t, delay: (i % 3) * 90 }));
+
+    // Recensioni verificate inviate dai clienti (approvate) — mostrate per prime.
+    const userReviews = (this.state.reviews || []).map(r => ({
+      initial: (r.nome && r.nome.trim() ? r.nome.trim()[0] : '★').toUpperCase(),
+      name: r.nome && r.nome.trim() ? r.nome.trim() : 'Allievo',
+      title: r.titolo && r.titolo.trim() ? r.titolo.trim() : 'Recensione',
+      quote: r.testo || '',
+      corso: r.corso || '',
+      fromClient: true
+    }));
+    const allTestimonials = userReviews.concat(testimonials).map((t, i) => ({
+      initial: t.initial,
+      name: t.name,
+      title: t.title,
+      quote: t.quote,
+      meta: t.corso && t.corso.trim() ? t.corso.trim() : 'Allievo · Scuola Faunistica Venatoria',
+      delay: (i % 3) * 90
+    }));
+
+    const rf = this.state.rf;
+    const canSend = !!(rf.nome.trim() && rf.testo.trim());
+    const rawLoc = this.state.locandine;
+    const locandineLoaded = rawLoc !== null;
+    const locandine = (rawLoc || []).map(l => ({
+      id: l.id,
+      titolo: l.titolo || 'Corso',
+      stato: l.stato || '',
+      descrizione: l.descrizione || '',
+      link: l.link || '',
+      immagine: l.immagine || '',
+      hasImage: !!l.immagine,
+      noImage: !l.immagine,
+      imgEl: l.immagine ? React.createElement('img', { src: l.immagine, alt: l.titolo || 'Locandina', style: { display:'block', width:'100%', height:'clamp(340px,42vw,440px)', objectFit:'cover', background:'#EAE3D2' } }) : null,
+      hasStato: !!(l.stato && l.stato.trim()),
+      hasLink: !!(l.link && l.link.trim()),
+      hasDesc: !!(l.descrizione && l.descrizione.trim()),
+      metaLine: [l.data, l.sede].filter(Boolean).join(' · ')
+    }));
+    const hasLocandine = locandine.length > 0;
+
+    return {
+      rootRef: this.rootRef,
+      navRef: this.navRef,
+      codeRef: this.codeRef,
+      locandine,
+      hasLocandine,
+      noLocandine: locandineLoaded && !hasLocandine,
+      links: [
+        { href:'#chi-siamo', label:'Chi siamo' },
+        { href:'#servizi', label:'Corsi' },
+        { href:'#news', label:'News' },
+        { href:'#testimonianze', label:'Allievi' },
+        { href:'#contatti', label:'Contatti' }
+      ],
+      corsi,
+      testimonials: allTestimonials,
+      reviewOpen: this.state.reviewOpen,
+      reviewClosed: !this.state.reviewOpen,
+      reviewDone: this.state.reviewDone,
+      reviewSending: this.state.reviewSending,
+      reviewError: this.state.reviewError,
+      rfNome: rf.nome,
+      rfTitolo: rf.titolo,
+      rfTesto: rf.testo,
+      rfCorso: rf.corso,
+      sendDisabled: !canSend || this.state.reviewSending,
+      sendCursor: (!canSend || this.state.reviewSending) ? 'default' : 'pointer',
+      sendBg: (!canSend || this.state.reviewSending) ? '#b8a874' : '#16290D',
+      sendLabel: this.state.reviewSending ? 'Invio…' : 'Invia recensione',
+      set_rf_nome: (e) => this.setState({ rf: { ...this.state.rf, nome: e.target.value } }),
+      set_rf_titolo: (e) => this.setState({ rf: { ...this.state.rf, titolo: e.target.value } }),
+      set_rf_testo: (e) => this.setState({ rf: { ...this.state.rf, testo: e.target.value } }),
+      set_rf_corso: (e) => this.setState({ rf: { ...this.state.rf, corso: e.target.value } }),
+      openReview: () => this.setState({ reviewOpen: true, reviewDone: false, reviewError: '' }),
+      closeReview: () => this.setState({ reviewOpen: false }),
+      submitReview: async (ev) => {
+        ev.preventDefault();
+        const d = this.state.rf;
+        if (!d.nome.trim() || !d.testo.trim()) return;
+        this.setState({ reviewSending: true, reviewError: '' });
+        try {
+          await window.SFVData.submitReview(d);
+          this.setState({ reviewSending: false, reviewDone: true, reviewOpen: false, rf: { nome:'', titolo:'', testo:'', corso:'' } });
+        } catch (e) {
+          this.setState({ reviewSending: false, reviewError: 'Invio non riuscito. Riprova o scrivici via email.' });
+        }
+      },
+      trackRef: this.trackRef,
+      scrollPrev: () => { if (this._carouselPause) this._carouselPause(); this.advance(-1); if (this._carouselResume) setTimeout(this._carouselResume, 6000); },
+      scrollNext: () => { if (this._carouselPause) this._carouselPause(); this.advance(1); if (this._carouselResume) setTimeout(this._carouselResume, 6000); },
+      isMobile: this.state.isMobile,
+      notMobile: !this.state.isMobile,
+      mobileMenuVisible: this.state.isMobile && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      verifyAttestato: (ev) => {
+        ev.preventDefault();
+        const codice = (this.codeRef.current && this.codeRef.current.value.trim()) || '';
+        const base = 'https://nuova-piattaforma-corsi-scuola-faun.vercel.app/verifica.html';
+        const url = codice ? (base + '?codice=' + encodeURIComponent(codice)) : base;
+        window.open(url, '_blank', 'noopener');
+      }
+    };
+  }
+}
+</script>
 </body>
 </html>

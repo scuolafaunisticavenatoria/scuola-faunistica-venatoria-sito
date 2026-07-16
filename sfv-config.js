@@ -1,23 +1,19 @@
 /* ============================================================
    CONFIGURAZIONE — Scuola Faunistica Venatoria
    ------------------------------------------------------------
-   Questo è l'UNICO file che devi modificare per collegare
-   il sito e il pannello al tuo database su Vercel.
+   Sito pubblicato su Vercel, stesso progetto che contiene già
+   le API (api/locandine.js, api/upload.js, api/recensioni.js).
 
    1) SFV_API_BASE
-      Lascia '' (vuoto) per la MODALITÀ DEMO: le modifiche
-      restano salvate solo sul tuo browser (utile per provare).
-
-      Quando pubblichi il backend su Vercel, metti qui l'indirizzo
-      del sito, es:  'https://scuolafaunisticavenatoria.it'
-      (senza barra finale). Da quel momento le modifiche fatte
-      dal pannello si vedono da tutti.
+      Impostato automaticamente sull'indirizzo da cui il sito
+      viene aperto (funziona su qualunque dominio/anteprima
+      Vercel senza doverlo scrivere a mano).
 
    2) SFV_ADMIN_TOKEN
       La password dell'area amministratore. DEVE essere identica
-      alla variabile d'ambiente ADMIN_TOKEN impostata su Vercel.
-      Cambiala prima di andare online.
+      alla variabile ADMIN_TOKEN già impostata su questo progetto
+      Vercel (Settings → Environment Variables).
    ============================================================ */
 
-window.SFV_API_BASE = 'https://scuola-faunistica-venatoria-sito-6y.vercel.app';
+window.SFV_API_BASE    = window.location.origin;
 window.SFV_ADMIN_TOKEN = 'Rudy26061976+';
