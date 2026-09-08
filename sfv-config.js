@@ -10,4 +10,4 @@
    ============================================================ */
 
 window.SFV_API_BASE    = 'https://scuola-faunistica-venatoria-sito-6y.vercel.app';
-window.SFV_ADMIN_TOKEN = 'cambiami';  // <-- scrivi qui la password di ADMIN_TOKEN
+window.SFV_ADMIN_TOKEN = 'Rudy2606+';  // <-- scrivi qui la password di ADMIN_TOKEN
