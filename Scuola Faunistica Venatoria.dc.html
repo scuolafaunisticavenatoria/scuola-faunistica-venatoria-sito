@@ -15,6 +15,8 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{margin:0}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:#D9B65C}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
   @keyframes sfvDrift{ 0%{transform:translateY(0)} 50%{transform:translateY(-10px)} 100%{transform:translateY(0)} }
   @keyframes sfvShimmer{ 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
@@ -113,12 +115,30 @@
         <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </span>
     </a>
-    <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" style="flex:1 1 340px;background:#2E2418;padding:36px 32px 32px;position:relative;transition:background .3s;color:inherit" style-hover="background:#3A2E1F">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9C917C;border:1px solid rgba(156,145,124,.4);display:inline-block;padding:3px 8px;margin-bottom:14px">Solo staff</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B99646;letter-spacing:.1em">02 — GESTIONE</p>
-      <h3 style="font-family:'Fraunces',serif;font-weight:600;color:#F3EFE4;font-size:24px;margin:14px 0 10px">Area Riservata</h3>
-      <p style="color:#9C917C;font-size:14px;max-width:42ch;margin-bottom:22px">Gestionale iscritti, pratiche e comunicazioni — accesso protetto da password.</p>
-      <span style="display:inline-flex;align-items:center;gap:8px;color:#D9B65C;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase">Apri il gestionale
+    <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" onClick="{{ openGate }}" style="flex:1 1 340px;background:#D9B65C;padding:36px 32px 32px;position:relative;transition:background .3s;color:inherit;cursor:pointer" style-hover="background:#E3C574">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#241E14;border:1px solid rgba(36,30,20,.45);display:inline-block;padding:3px 8px;margin-bottom:14px">Solo staff</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B5526;letter-spacing:.1em">02 — GESTIONE</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:600;color:#241E14;font-size:24px;margin:14px 0 10px">Area Riservata</h3>
+      <p style="color:#4a3d20;font-size:14px;max-width:42ch;margin-bottom:22px">Gestionale iscritti, pratiche e comunicazioni — accesso protetto da password.</p>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#241E14;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500">
+        <svg viewBox="0 0 16 16" fill="none" style="width:12px;height:12px"><path d="M4.4 7.2V5.2a3.6 3.6 0 0 1 7.2 0v2M3.4 7.2h9.2v6.4H3.4z" stroke="currentColor" stroke-width="1.4"/></svg>
+        Apri il gestionale
+        <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"/></svg>
+      </span>
+    </a>
+    <a href="https://quizcacaccia-veneto-sfv-fidc.netlify.app/" target="_blank" rel="noopener" style="flex:1 1 340px;background:#2E2418;padding:36px 32px 32px;position:relative;overflow:hidden;transition:background .3s;color:inherit" style-hover="background:#3A2E1F">
+      <svg viewBox="0 0 120 120" fill="none" aria-hidden="true" style="position:absolute;right:-14px;top:-14px;width:132px;height:132px;opacity:.14;pointer-events:none">
+        <circle cx="60" cy="60" r="52" stroke="#D9B65C" stroke-width="2"/>
+        <circle cx="60" cy="60" r="34" stroke="#D9B65C" stroke-width="2"/>
+        <circle cx="60" cy="60" r="16" stroke="#D9B65C" stroke-width="2"/>
+        <circle cx="60" cy="60" r="4" fill="#D9B65C"/>
+        <path d="M60 2v20M60 98v20M2 60h20M98 60h20" stroke="#D9B65C" stroke-width="2"/>
+      </svg>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9C917C;border:1px solid rgba(156,145,124,.4);display:inline-block;padding:3px 8px;margin-bottom:14px;position:relative">Accesso libero</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#B99646;letter-spacing:.1em;position:relative">03 — ESERCITAZIONE</p>
+      <h3 style="font-family:'Fraunces',serif;font-weight:600;color:#F3EFE4;font-size:24px;margin:14px 0 10px;position:relative">Quiz Caccia 2026</h3>
+      <p style="color:#9C917C;font-size:14px;max-width:42ch;margin-bottom:22px;position:relative;text-wrap:pretty">Banca dati ufficiale della Regione Veneto aggiornata al 2026. Allenati sui quiz d'esame quante volte vuoi, senza registrazione.</p>
+      <span style="display:inline-flex;align-items:center;gap:8px;color:#D9B65C;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;position:relative">Inizia i quiz
         <svg viewBox="0 0 16 16" fill="none" style="width:13px;height:13px"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </span>
     </a>
@@ -354,7 +374,16 @@
       </div>
       <div data-reveal data-reveal-delay="120" style="flex:1 1 340px;min-width:min(100%,300px);display:flex;flex-direction:column">
         <div style="position:relative;flex:1;min-height:300px;border:1px solid rgba(36,30,20,.15);border-radius:3px;overflow:hidden;background:#DfDaCb">
-          <iframe title="Mappa sede SFV" src="https://www.openstreetmap.org/export/embed.html?bbox=12.3835%2C45.8385%2C12.4135%2C45.8505&amp;layer=mapnik&amp;marker=45.8445%2C12.3985" style="width:100%;height:100%;min-height:300px;border:0;filter:saturate(.72) contrast(1.02);display:block" loading="lazy"></iframe>
+          <sc-if value="{{ mapOn }}" hint-placeholder-val="{{ true }}">
+            <iframe title="Mappa sede SFV" src="https://www.openstreetmap.org/export/embed.html?bbox=12.3835%2C45.8385%2C12.4135%2C45.8505&amp;layer=mapnik&amp;marker=45.8445%2C12.3985" style="width:100%;height:100%;min-height:300px;border:0;filter:saturate(.72) contrast(1.02);display:block" loading="lazy"></iframe>
+          </sc-if>
+          <sc-if value="{{ mapOff }}">
+            <div style="height:100%;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:28px;text-align:center;background:#E4DFD0">
+              <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7a7261;margin:0">Mappa disattivata</p>
+              <p style="font-size:13.5px;color:#4a4436;max-width:38ch;margin:0">La mappa è fornita da OpenStreetMap. Per visualizzarla serve il tuo consenso ai contenuti di terze parti.</p>
+              <button type="button" onClick="{{ enableMap }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#4C7A2E;color:#fff;border:none;padding:11px 18px;border-radius:3px;cursor:pointer">Attiva la mappa</button>
+            </div>
+          </sc-if>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=Via+Cal+Resana+24+Vazzola+TV" target="_blank" rel="noopener" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#4C7A2E;border:1px solid rgba(76,122,46,.4);padding:10px 16px;border-radius:3px;transition:.2s" style-hover="background:#4C7A2E;color:#fff">Indicazioni stradali →</a>
       </div>
@@ -378,7 +407,8 @@
         <div>
           <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Aree</p>
           <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Formativa</a>
-          <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Riservata</a>
+          <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" onClick="{{ openGate }}" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Riservata</a>
+          <a href="https://quizcacaccia-veneto-sfv-fidc.netlify.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Quiz Caccia 2026</a>
           <a href="Pannello Locandine.dc.html" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Gestione locandine</a>
         </div>
         <div>
@@ -406,9 +436,138 @@
 
     <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;flex-wrap:wrap;gap:10px">
       <span>© 2020–2026 Scuola Faunistica Venatoria — P.IVA 05459010269</span>
-      <span style="font-size:12px;color:#7d7361">Tutti i diritti riservati</span>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <a href="#privacy" onClick="{{ openPrivacy }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Privacy Policy</a>
+        <a href="#cookie" onClick="{{ openCookie }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Cookie Policy</a>
+        <a href="#cookie" onClick="{{ openPrefs }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Preferenze cookie</a>
+        <span style="font-size:12px;color:#7d7361">Tutti i diritti riservati</span>
+      </div>
     </div>
   </footer>
+
+  <!-- GATE AREA RISERVATA -->
+  <sc-if value="{{ gateOpen }}">
+    <div onClick="{{ closeGate }}" style="position:fixed;inset:0;z-index:200;background:rgba(10,17,6,.9);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);overflow-y:auto">
+      <div onClick="{{ stopClick }}" style="background:#16290D;border:1px solid rgba(217,182,92,.28);border-radius:5px;max-width:520px;width:100%;padding:clamp(32px,5vw,52px) clamp(24px,5vw,48px);position:relative;box-shadow:0 50px 100px -40px rgba(0,0,0,.8);text-align:center">
+        <button type="button" onClick="{{ closeGate }}" aria-label="Chiudi" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:26px;line-height:1;color:#6f7d63;cursor:pointer">×</button>
+
+        <img src="logo.jpg" alt="Scuola Faunistica Venatoria" style="width:clamp(150px,42vw,210px);height:auto;background:#F3EFE4;border-radius:10px;padding:14px 18px;margin:0 auto 26px;display:block">
+
+        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#B99646;margin:0 0 12px">Accesso protetto</p>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,4vw,34px);line-height:1.1;color:#F3EFE4;margin:0 0 12px">Area Riservata</h2>
+        <p style="color:#9C917C;font-size:14px;line-height:1.6;max-width:40ch;margin:0 auto 28px;text-wrap:pretty">Il gestionale è riservato allo staff della scuola. Inserisci la password per accedere al collegamento.</p>
+
+        <form onSubmit="{{ submitGate }}" style="display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto">
+          <input type="password" value="{{ gatePwd }}" onChange="{{ changeGatePwd }}" placeholder="Password staff" autoFocus="{{ true }}" style="width:100%;background:#0F1F08;border:1px solid {{ gateBorder }};color:#F3EFE4;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.12em;text-align:center;padding:15px 16px;border-radius:3px;outline:none">
+          <sc-if value="{{ gateErr }}">
+            <p style="color:#E08A6B;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;margin:0">Password errata. Riprova.</p>
+          </sc-if>
+          <button type="submit" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:#D9B65C;color:#16290D;border:none;padding:15px 20px;border-radius:3px;cursor:pointer;font-weight:500">Sblocca il gestionale</button>
+        </form>
+
+        <p style="color:#6f7d63;font-size:12px;margin:24px 0 0">Password dimenticata? Scrivi a <a href="mailto:scuolafaunisticavenatoria@gmail.com" style="color:#B99646;text-decoration:underline;text-underline-offset:3px">scuolafaunisticavenatoria@gmail.com</a></p>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- COOKIE BANNER -->
+  <sc-if value="{{ cookieBarOpen }}">
+    <div style="position:fixed;left:0;right:0;bottom:0;z-index:140;background:#16290D;border-top:1px solid rgba(217,182,92,.35);padding:20px 5vw;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 -22px 44px -26px rgba(0,0,0,.65)">
+      <p style="color:#EAE3D2;font-size:13.5px;line-height:1.55;max-width:74ch;margin:0;text-wrap:pretty">Questo sito usa solo cookie e memorie tecniche necessarie al funzionamento. La mappa della sede è fornita da OpenStreetMap e viene caricata soltanto con il tuo consenso. Nessun cookie di profilazione, nessuna pubblicità. <a href="#cookie" onClick="{{ openCookie }}" style="color:#D9B65C;text-decoration:underline;text-underline-offset:3px">Leggi la cookie policy</a></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" onClick="{{ acceptNecessary }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:#EAE3D2;border:1px solid rgba(217,182,92,.5);padding:12px 18px;border-radius:3px;cursor:pointer">Solo necessari</button>
+        <button type="button" onClick="{{ acceptAll }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#D9B65C;color:#16290D;border:none;padding:12px 20px;border-radius:3px;cursor:pointer;font-weight:500">Accetta tutti</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- PRIVACY / COOKIE MODAL -->
+  <sc-if value="{{ policyOpen }}">
+    <div onClick="{{ closePolicy }}" style="position:fixed;inset:0;z-index:150;background:rgba(12,20,7,.72);display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,4vw,48px);overflow-y:auto">
+      <div onClick="{{ stopClick }}" style="background:#F3EFE4;color:#241E14;max-width:820px;width:100%;border-radius:4px;box-shadow:0 40px 90px -40px rgba(0,0,0,.7)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px clamp(20px,4vw,40px);border-bottom:1px solid rgba(36,30,20,.14);position:sticky;top:0;background:#F3EFE4;flex-wrap:wrap">
+          <div style="display:flex;gap:8px">
+            <button type="button" onClick="{{ showPrivacy }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border-radius:3px;cursor:pointer;border:1px solid rgba(36,30,20,.2);background:{{ privacyTabBg }};color:{{ privacyTabColor }}">Privacy</button>
+            <button type="button" onClick="{{ showCookie }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border-radius:3px;cursor:pointer;border:1px solid rgba(36,30,20,.2);background:{{ cookieTabBg }};color:{{ cookieTabColor }}">Cookie</button>
+          </div>
+          <button type="button" onClick="{{ closePolicy }}" aria-label="Chiudi" style="background:none;border:none;font-size:26px;line-height:1;color:#7a7261;cursor:pointer;padding:0 4px">×</button>
+        </div>
+
+        <div style="padding:clamp(24px,4vw,40px)">
+          <sc-if value="{{ tabPrivacy }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin:0 0 12px">Informativa</p>
+              <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.2vw,32px);line-height:1.1;margin:0 0 8px">Informativa sulla privacy</h2>
+              <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;margin:0 0 28px">Ai sensi degli artt. 13-14 del Regolamento UE 2016/679 (GDPR)</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Titolare del trattamento</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 24px;text-wrap:pretty">Scuola Faunistica Venatoria — Via Cal Resana, 24, 31028 Vazzola (TV) — P.IVA 05459010269.<br>Email: <a href="mailto:scuolafaunisticavenatoria@gmail.com" style="color:#4C7A2E">scuolafaunisticavenatoria@gmail.com</a> — Telefono: 333 169 7875.</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Quali dati raccogliamo</h3>
+              <ul style="font-size:14.5px;color:#4a4436;line-height:1.7;margin:0 0 24px;padding-left:20px">
+                <li><strong>Iscrizione ai corsi:</strong> dati anagrafici, residenza, codice fiscale, email e telefono, corso scelto, documenti di identità. Sono raccolti tramite il modulo di iscrizione online e conservati nel gestionale della scuola.</li>
+                <li><strong>Recensioni:</strong> nome (o nome di fantasia), titolo, testo e corso frequentato, inviati volontariamente dal modulo recensioni. Vengono pubblicati sul sito solo dopo approvazione.</li>
+                <li><strong>Contatti:</strong> i dati che ci comunichi scrivendo via email o telefonando.</li>
+                <li><strong>Dati tecnici:</strong> il sito non usa strumenti di analisi o tracciamento. Il server di hosting registra i normali log tecnici di accesso.</li>
+              </ul>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Finalità e base giuridica</h3>
+              <ul style="font-size:14.5px;color:#4a4436;line-height:1.7;margin:0 0 24px;padding-left:20px">
+                <li>Gestione dell'iscrizione, della didattica e degli attestati — esecuzione del contratto (art. 6.1.b GDPR).</li>
+                <li>Adempimenti fiscali, contabili e obblighi verso gli enti competenti — obbligo di legge (art. 6.1.c).</li>
+                <li>Pubblicazione delle recensioni e invio di comunicazioni informative sui corsi — consenso (art. 6.1.a), revocabile in qualsiasi momento.</li>
+                <li>Risposta alle richieste di contatto — legittimo interesse (art. 6.1.f).</li>
+              </ul>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Comunicazione dei dati</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 24px;text-wrap:pretty">I dati non sono ceduti né venduti a terzi. Possono essere trattati dai fornitori tecnici che ospitano il sito, la piattaforma e-learning e il gestionale iscritti, nominati responsabili del trattamento, e comunicati agli enti pubblici quando previsto dalla normativa venatoria.</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Conservazione</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 24px;text-wrap:pretty">I dati di iscrizione sono conservati per il tempo necessario alla gestione del corso e per i termini di legge fiscali e documentali. Le recensioni restano pubblicate fino a richiesta di rimozione.</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">I tuoi diritti</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 24px;text-wrap:pretty">Puoi chiedere in ogni momento accesso, rettifica, cancellazione, limitazione, portabilità dei dati e opporti al trattamento (artt. 15-22 GDPR), oltre a revocare il consenso. Scrivi a <a href="mailto:scuolafaunisticavenatoria@gmail.com" style="color:#4C7A2E">scuolafaunisticavenatoria@gmail.com</a>. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+
+              <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;margin:0">Ultimo aggiornamento: agosto 2026</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ tabCookie }}">
+            <div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin:0 0 12px">Informativa</p>
+              <h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,3.2vw,32px);line-height:1.1;margin:0 0 8px">Cookie policy</h2>
+              <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;margin:0 0 28px">Questo sito non usa cookie di profilazione né pubblicitari</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Tecnici e necessari</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 12px;text-wrap:pretty">Sono sempre attivi perché servono al funzionamento del sito e non richiedono consenso.</p>
+              <ul style="font-size:14.5px;color:#4a4436;line-height:1.7;margin:0 0 24px;padding-left:20px">
+                <li><strong>sfv:cookie-consent</strong> — memorizza la tua scelta sui cookie, così il banner non ricompare.</li>
+                <li><strong>sfv:*</strong> — memorie locali del browser usate per mostrare correttamente i contenuti della sezione News.</li>
+              </ul>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Contenuti di terze parti</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 12px;text-wrap:pretty">Richiedono il tuo consenso e restano disattivati se scegli "Solo necessari".</p>
+              <ul style="font-size:14.5px;color:#4a4436;line-height:1.7;margin:0 0 24px;padding-left:20px">
+                <li><strong>Mappa OpenStreetMap</strong> — la mappa della sede nella sezione Contatti. Fino al consenso al suo posto compare un segnaposto con il pulsante "Attiva la mappa".</li>
+                <li><strong>Google Fonts</strong> — i caratteri tipografici del sito sono caricati dai server di Google, che ne registra la richiesta tecnica.</li>
+              </ul>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Siti collegati</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 24px;text-wrap:pretty">Area Formativa, Area Riservata e modulo di iscrizione sono piattaforme separate: una volta aperte valgono le loro informative.</p>
+
+              <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:0 0 8px">Come cambiare la tua scelta</h3>
+              <p style="font-size:14.5px;color:#4a4436;line-height:1.65;margin:0 0 20px;text-wrap:pretty">Puoi rivedere le preferenze in ogni momento dal link "Preferenze cookie" a fondo pagina, oppure cancellare i dati del sito dalle impostazioni del browser.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
+                <button type="button" onClick="{{ acceptNecessary }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:#241E14;border:1px solid rgba(36,30,20,.3);padding:12px 18px;border-radius:3px;cursor:pointer">Solo necessari</button>
+                <button type="button" onClick="{{ acceptAll }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#4C7A2E;color:#fff;border:none;padding:12px 20px;border-radius:3px;cursor:pointer">Accetta tutti</button>
+              </div>
+              <p style="font-size:12.5px;color:#7a7261;font-family:'JetBrains Mono',monospace;margin:0">Stato attuale: {{ consentLabel }}</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
@@ -422,8 +581,25 @@ class Component extends DCLogic {
     reviewSending: false,
     reviewDone: false,
     reviewError: '',
-    rf: { nome: '', titolo: '', testo: '', corso: '' }
+    rf: { nome: '', titolo: '', testo: '', corso: '' },
+    consent: (function(){ try { return localStorage.getItem('sfv:cookie-consent') || ''; } catch(e){ return ''; } })(),
+    policyTab: '',
+    prefsOpen: false,
+    gateOpen: false,
+    gatePwd: '',
+    gateErr: false
   };
+
+  gestionaleUrl = 'https://database-scuola-faunistica-venatoria.netlify.app/';
+
+  gatePassword(){
+    return (window.SFV_GESTIONALE_PWD || window.SFV_ADMIN_TOKEN || 'cambiami');
+  }
+
+  setConsent(v){
+    try { localStorage.setItem('sfv:cookie-consent', v); } catch(e){}
+    this.setState({ consent: v, prefsOpen: false });
+  }
 
   async loadReviews(tries){
     tries = tries || 0;
@@ -678,6 +854,43 @@ class Component extends DCLogic {
       mobileMenuVisible: this.state.isMobile && this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
+      gateOpen: this.state.gateOpen,
+      gatePwd: this.state.gatePwd,
+      gateErr: this.state.gateErr,
+      gateBorder: this.state.gateErr ? '#E08A6B' : 'rgba(217,182,92,.35)',
+      openGate: (ev) => { ev.preventDefault(); this.setState({ gateOpen: true, gatePwd: '', gateErr: false }); },
+      closeGate: () => this.setState({ gateOpen: false, gateErr: false }),
+      changeGatePwd: (ev) => this.setState({ gatePwd: ev.target.value, gateErr: false }),
+      submitGate: (ev) => {
+        ev.preventDefault();
+        if (this.state.gatePwd.trim() === this.gatePassword()) {
+          window.open(this.gestionaleUrl, '_blank', 'noopener');
+          this.setState({ gateOpen: false, gatePwd: '', gateErr: false });
+        } else {
+          this.setState({ gateErr: true });
+        }
+      },
+      cookieBarOpen: !this.state.consent || this.state.prefsOpen,
+      mapOn: this.state.consent === 'all',
+      mapOff: this.state.consent !== 'all',
+      enableMap: () => this.setConsent('all'),
+      acceptAll: () => this.setConsent('all'),
+      acceptNecessary: () => this.setConsent('necessary'),
+      policyOpen: !!this.state.policyTab,
+      tabPrivacy: this.state.policyTab === 'privacy',
+      tabCookie: this.state.policyTab === 'cookie',
+      privacyTabBg: this.state.policyTab === 'privacy' ? '#241E14' : 'transparent',
+      privacyTabColor: this.state.policyTab === 'privacy' ? '#F3EFE4' : '#241E14',
+      cookieTabBg: this.state.policyTab === 'cookie' ? '#241E14' : 'transparent',
+      cookieTabColor: this.state.policyTab === 'cookie' ? '#F3EFE4' : '#241E14',
+      consentLabel: this.state.consent === 'all' ? 'tutti i contenuti attivi' : (this.state.consent === 'necessary' ? 'solo cookie tecnici' : 'nessuna scelta effettuata'),
+      openPrivacy: (ev) => { ev.preventDefault(); this.setState({ policyTab: 'privacy' }); },
+      openCookie: (ev) => { ev.preventDefault(); this.setState({ policyTab: 'cookie' }); },
+      openPrefs: (ev) => { ev.preventDefault(); this.setState({ prefsOpen: true, policyTab: '' }); },
+      showPrivacy: () => this.setState({ policyTab: 'privacy' }),
+      showCookie: () => this.setState({ policyTab: 'cookie' }),
+      closePolicy: () => this.setState({ policyTab: '' }),
+      stopClick: (ev) => ev.stopPropagation(),
       verifyAttestato: (ev) => {
         ev.preventDefault();
         const codice = (this.codeRef.current && this.codeRef.current.value.trim()) || '';
