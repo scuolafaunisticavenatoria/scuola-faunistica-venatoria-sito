@@ -1,19 +1,13 @@
 /* ============================================================
    CONFIGURAZIONE — Scuola Faunistica Venatoria
    ------------------------------------------------------------
-   Sito pubblicato su Vercel, stesso progetto che contiene già
-   le API (api/locandine.js, api/upload.js, api/recensioni.js).
+   Sito e database sono sullo STESSO progetto Vercel, quindi
+   SFV_API_BASE resta l'indirizzo del sito.
 
-   1) SFV_API_BASE
-      Impostato automaticamente sull'indirizzo da cui il sito
-      viene aperto (funziona su qualunque dominio/anteprima
-      Vercel senza doverlo scrivere a mano).
-
-   2) SFV_ADMIN_TOKEN
-      La password dell'area amministratore. DEVE essere identica
-      alla variabile ADMIN_TOKEN già impostata su questo progetto
-      Vercel (Settings → Environment Variables).
+   SFV_ADMIN_TOKEN e' la password del Pannello Locandine e
+   dell'Area Riservata. DEVE essere identica alla variabile
+   ADMIN_TOKEN impostata su Vercel.
    ============================================================ */
 
-window.SFV_API_BASE    = window.location.origin;
-window.SFV_ADMIN_TOKEN = 'Rudy26061976+';
+window.SFV_API_BASE    = 'https://scuola-faunistica-venatoria-sito-6y.vercel.app';
+window.SFV_ADMIN_TOKEN = 'cambiami';  // <-- scrivi qui la password di ADMIN_TOKEN
