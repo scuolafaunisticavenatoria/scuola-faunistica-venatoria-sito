@@ -69,9 +69,9 @@
   </sc-if>
 
   <!-- ENROLL BAR -->
-  <a id="top" href="https://iscrizione-corsi-sfv-2026-nuovo.netlify.app/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#B99646,#D9B65C,#B99646);background-size:200% 100%;animation:sfvShimmer 6s linear infinite alternate;color:#16290D;text-align:center;padding:13px 5vw;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(14px,2vw,18px);letter-spacing:.01em;transition:filter .2s" style-hover="filter:brightness(1.06)">
-    Iscriviti ai corsi 2026 · Scuola Faunistica Venatoria
-    <span style="text-decoration:underline;text-underline-offset:3px">scopri come →</span>
+  <a id="top" href="https://iscrizione-corsi-sfv-2026-nuovo.netlify.app/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#B99646,#D9B65C,#B99646);background-size:200% 100%;animation:sfvShimmer 6s linear infinite alternate;color:#16290D;text-align:center;padding:13px 5vw;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(18px,2.7vw,25px);letter-spacing:.01em;transition:filter .25s,letter-spacing .25s,padding .25s" style-hover="filter:brightness(1.1) saturate(1.08);letter-spacing:.035em;padding-top:17px;padding-bottom:17px">
+    Iscriviti ai corsi · Scuola Faunistica Venatoria
+    <span style="text-decoration:underline;text-underline-offset:4px;transition:text-underline-offset .25s" style-hover="text-underline-offset:7px">scopri come →</span>
   </a>
 
   <!-- HERO -->
@@ -96,7 +96,7 @@
         </div>
       </div>
       <div data-reveal data-reveal-delay="150" style="flex:1 1 340px;min-width:min(100%,320px);position:relative">
-        <image-slot id="sfv-hero" shape="rounded" radius="3" placeholder="Foto aula / collezione — trascina qui" style="display:block;width:100%;height:clamp(380px,46vw,520px);border:1px solid rgba(217,182,92,.3)"></image-slot>
+        <img src="camosci-hero.webp" alt="Camosci al pascolo" style="display:block;width:100%;height:clamp(380px,46vw,520px);object-fit:cover;border-radius:3px;border:1px solid rgba(217,182,92,.3)">
         <div style="position:absolute;left:-10px;bottom:22px;background:#2E2418;color:#F3EFE4;padding:14px 18px;border-left:3px solid #D9B65C;box-shadow:0 18px 40px -18px rgba(0,0,0,.6);max-width:220px">
           <b style="font-family:'Fraunces',serif;font-size:28px;color:#D9B65C;display:block;line-height:1">500+</b>
           <span style="font-size:12px;color:#9C917C;letter-spacing:.02em">esemplari per la pratica in sede</span>
@@ -174,7 +174,7 @@
       </div>
       <div data-reveal data-reveal-delay="120" style="flex:1 1 300px;min-width:min(100%,280px)">
         <div style="display:flex;gap:18px;align-items:flex-start;margin-bottom:20px">
-          <image-slot id="sfv-founder" shape="rounded" radius="3" placeholder="Foto docente" style="width:104px;height:130px;flex-shrink:0;border:1px solid rgba(36,30,20,.18)"></image-slot>
+          <img src="docente.webp" alt="Rudy Collodet" style="width:104px;height:130px;flex-shrink:0;object-fit:cover;border-radius:3px;border:1px solid rgba(36,30,20,.18)">
           <div style="border-left:2px solid #D9B65C;padding-left:18px">
             <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:8px">Il docente</p>
             <h3 style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;margin-bottom:4px">Rudy Collodet</h3>
@@ -188,7 +188,7 @@
 
   <!-- COLLECTION BAND -->
   <section data-reveal style="position:relative;background:#16290D;padding:0;overflow:hidden">
-    <image-slot id="sfv-collezione" shape="rect" placeholder="Foto della collezione naturalistica — trascina qui" style="width:100%;height:clamp(280px,42vw,440px);display:block"></image-slot>
+    <img src="camoscio-collezione.jpeg" alt="Camoscio nel suo ambiente" style="width:100%;height:clamp(280px,42vw,440px);object-fit:cover;display:block">
     <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,41,13,.86) 0%,rgba(22,41,13,.5) 45%,rgba(22,41,13,.15) 100%);pointer-events:none"></div>
     <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 5vw;pointer-events:none">
       <div style="max-width:460px;color:#F3EFE4">
@@ -232,7 +232,7 @@
     <sc-if value="{{ hasLocandine }}" hint-placeholder-val="{{ true }}">
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:24px;max-width:1240px;margin:0 auto">
         <sc-for list="{{ locandine }}" as="l" hint-placeholder-count="3">
-          <article style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(36,30,20,.12);border-radius:4px;overflow:hidden;transition:transform .3s, box-shadow .3s" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(22,41,13,.4)">
+          <article id="{{ l.anchor }}" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(36,30,20,.12);border-radius:4px;overflow:hidden;transition:transform .3s, box-shadow .3s;scroll-margin-top:110px" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(22,41,13,.4)">
             <sc-if value="{{ l.hasImage }}" hint-placeholder-val="{{ false }}">
               {{ l.imgEl }}
             </sc-if>
@@ -393,8 +393,13 @@
   <!-- FOOTER -->
   <footer style="background:#2E2418;color:#9C917C;padding:clamp(44px,6vw,56px) 5vw 30px">
     <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(217,182,92,.14)">
-      <div style="max-width:280px">
-        <img src="logo.jpg" alt="Scuola Faunistica Venatoria" style="height:52px;width:auto;background:#F3EFE4;border-radius:6px;padding:6px 9px;margin-bottom:14px">
+      <div style="max-width:420px">
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:18px;flex-wrap:wrap">
+          <img src="logo.jpg" alt="Scuola Faunistica Venatoria" style="height:96px;width:auto;background:#F3EFE4;border-radius:8px;padding:10px 14px">
+          <a href="https://cal-resana-outdoor.vercel.app/" target="_blank" rel="noopener" title="Cal Resana Outdoor" style="display:inline-flex;transition:opacity .2s;opacity:.92" style-hover="opacity:1">
+            <img src="cal-resana-logo.png" alt="Cal Resana Outdoor" style="height:132px;width:auto;background:#F3EFE4;border-radius:8px;padding:10px 14px;display:block">
+          </a>
+        </div>
         <span style="display:block;color:#9C917C;font-size:13px">Via Cal Resana, 24 — Vazzola (TV)</span>
       </div>
       <div style="display:flex;gap:clamp(32px,6vw,64px);flex-wrap:wrap">
@@ -409,7 +414,6 @@
           <a href="https://nuova-piattaforma-corsi-scuola-faun.vercel.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Formativa</a>
           <a href="https://database-scuola-faunistica-venatoria.netlify.app/" target="_blank" rel="noopener" onClick="{{ openGate }}" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Area Riservata</a>
           <a href="https://quizcacaccia-veneto-sfv-fidc.netlify.app/" target="_blank" rel="noopener" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Quiz Caccia 2026</a>
-          <a href="Pannello Locandine.dc.html" style="display:block;font-size:13.5px;margin-bottom:9px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Gestione locandine</a>
         </div>
         <div>
           <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B99646;margin-bottom:14px">Seguici</p>
@@ -421,7 +425,6 @@
 
     <!-- COLLABORAZIONE -->
     <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:30px 0;border-bottom:1px solid rgba(217,182,92,.14)">
-      <img src="cal-resana-logo.png" alt="Cal Resana Outdoor" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
       <a href="https://www.jagdterrier.it/" target="_blank" rel="noopener" style="display:inline-flex">
         <img src="cidjt-logo.png" alt="Club Italiano Deutscher Jagdterrier" style="height:110px;width:auto;flex-shrink:0;background:#F3EFE4;border-radius:8px;padding:10px 14px">
       </a>
@@ -435,10 +438,11 @@
     </div>
 
     <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12px;flex-wrap:wrap;gap:10px">
-      <span>© 2020–2026 Scuola Faunistica Venatoria — P.IVA 05459010269</span>
+      <span onClick="{{ secretTap }}" style="user-select:none">© 2020–2026 Scuola Faunistica Venatoria — P.IVA 05459010269</span>
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
         <a href="#privacy" onClick="{{ openPrivacy }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Privacy Policy</a>
         <a href="#cookie" onClick="{{ openCookie }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Cookie Policy</a>
+        <a href="privacy-piattaforma.html" target="_blank" rel="noopener" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Privacy piattaforma e-learning</a>
         <a href="#cookie" onClick="{{ openPrefs }}" style="font-size:12px;color:#9C917C;transition:color .2s" style-hover="color:#D9B65C">Preferenze cookie</a>
         <span style="font-size:12px;color:#7d7361">Tutti i diritti riservati</span>
       </div>
@@ -587,8 +591,12 @@ class Component extends DCLogic {
     prefsOpen: false,
     gateOpen: false,
     gatePwd: '',
-    gateErr: false
+    gateErr: false,
+    gateTarget: 'gestionale'
   };
+
+  taps = 0;
+  tapTimer = null;
 
   gestionaleUrl = 'https://database-scuola-faunistica-venatoria.netlify.app/';
 
@@ -613,6 +621,21 @@ class Component extends DCLogic {
     } catch (e) { /* mantiene solo le curate */ }
   }
 
+  // Un link diretto a una locandina (#loc-...) arriva prima che le
+  // locandine siano caricate: qui la porto in vista e la evidenzio.
+  goToHashLocandina(){
+    const h = (location.hash || '').replace('#', '');
+    if (!h || h.indexOf('loc-') !== 0) return;
+    setTimeout(() => {
+      const el = document.getElementById(h);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 110;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      el.style.boxShadow = '0 0 0 3px #D9B65C, 0 22px 44px -26px rgba(22,41,13,.4)';
+      setTimeout(() => { el.style.boxShadow = ''; }, 2600);
+    }, 120);
+  }
+
   async loadLocandine(tries){
     tries = tries || 0;
     if (!window.SFVData){
@@ -621,7 +644,7 @@ class Component extends DCLogic {
     }
     try {
       const items = await window.SFVData.list();
-      this.setState({ locandine: Array.isArray(items) ? items : [] });
+      this.setState({ locandine: Array.isArray(items) ? items : [] }, () => this.goToHashLocandina());
     } catch (e) {
       this.setState({ locandine: [] });
     }
@@ -784,6 +807,7 @@ class Component extends DCLogic {
     const locandineLoaded = rawLoc !== null;
     const locandine = (rawLoc || []).map(l => ({
       id: l.id,
+      anchor: 'loc-' + l.id,
       titolo: l.titolo || 'Corso',
       stato: l.stato || '',
       descrizione: l.descrizione || '',
@@ -858,13 +882,23 @@ class Component extends DCLogic {
       gatePwd: this.state.gatePwd,
       gateErr: this.state.gateErr,
       gateBorder: this.state.gateErr ? '#E08A6B' : 'rgba(217,182,92,.35)',
-      openGate: (ev) => { ev.preventDefault(); this.setState({ gateOpen: true, gatePwd: '', gateErr: false }); },
+      openGate: (ev) => { ev.preventDefault(); this.setState({ gateOpen: true, gatePwd: '', gateErr: false, gateTarget: 'gestionale' }); },
+      secretTap: () => {
+        this.taps += 1;
+        clearTimeout(this.tapTimer);
+        this.tapTimer = setTimeout(() => { this.taps = 0; }, 1200);
+        if (this.taps >= 3) {
+          this.taps = 0;
+          this.setState({ gateOpen: true, gatePwd: '', gateErr: false, gateTarget: 'pannello' });
+        }
+      },
       closeGate: () => this.setState({ gateOpen: false, gateErr: false }),
       changeGatePwd: (ev) => this.setState({ gatePwd: ev.target.value, gateErr: false }),
       submitGate: (ev) => {
         ev.preventDefault();
         if (this.state.gatePwd.trim() === this.gatePassword()) {
-          window.open(this.gestionaleUrl, '_blank', 'noopener');
+          const url = this.state.gateTarget === 'pannello' ? 'Pannello Locandine.dc.html' : this.gestionaleUrl;
+          window.open(url, '_blank', 'noopener');
           this.setState({ gateOpen: false, gatePwd: '', gateErr: false });
         } else {
           this.setState({ gateErr: true });
